@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Q3.py
 
 from DB.DB import DB

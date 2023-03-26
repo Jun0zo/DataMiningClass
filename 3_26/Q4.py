@@ -1,7 +1,11 @@
+# -*- coding: utf-8 -*-
+
+# Q4.py
+
 import re
 
-from .DB.DB import DB
-from .Engines.SimilarityMachine import SimilarityMachine
+from DB.DB import DB
+from Engines.SimilarityMachine import SimilarityMachine
 
 DEBUG = 0
 NORMAL = 1
@@ -34,12 +38,12 @@ actorDB = DB([
 ], pk_name="name")
 
 documentDB = DB([
-    {"id": 1, "docs": [[
+    {"id": "1", "docs": [[
         *["monetary" for i in range(2)], 
         *["performance" for i in range(7)], 
         *["transition" for i in range(3)]
     ]]},
-    {"id": 2, "docs": [[
+    {"id": "2", "docs": [[
         *["monetary" for i in range(0)], 
         *["performance" for i in range(2)], 
         *["transition" for i in range(3)]
@@ -50,7 +54,7 @@ key1 = "Jeff Ulman"
 key2 = "Jenifer Widom"
 jaccardMachine = SimilarityMachine(db=scientistDB, mode=DEBUG)
 jaccardSimilarity = jaccardMachine.getJaccard(key1, key2)
-print(f'{key1}"과 {key2}의 자카드 유사도 : {jaccardSimilarity}\n')
+print(f'{key1}과 {key2}의 자카드 유사도 : {jaccardSimilarity}\n')
 
 key1 = "Tom Cruise"
 key2 = "T. Cruise"
@@ -58,8 +62,8 @@ cosineMuchine = SimilarityMachine(db=actorDB, mode=DEBUG)
 cosineDistance = cosineMuchine.getCosine(key1, key2)
 print(f'{key1}과 {key2}의 코사인 유사도 : {cosineDistance}\n')
 
-key1 = 1
-key2 = 2
+key1 = "1"
+key2 = "2"
 cosineMuchine2 = SimilarityMachine(db=documentDB, mode=DEBUG)
 cosineDistance = cosineMuchine2.getCosine(key1, key2)
 print(f'document {key1}과 document {key2}의 코사인 유사도 : {cosineDistance}')

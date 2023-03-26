@@ -12,7 +12,7 @@ class DB:
         self.b = 10
 
 class DistanceMachine:
-    def __init__(self, db: DB, mode : int =NORMAL) -> None:
+    def __init__(self, db: DB, mode: int = NORMAL) -> None:
         '''
             constructor
             Args:

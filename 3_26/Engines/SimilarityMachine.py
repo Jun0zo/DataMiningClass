@@ -1,14 +1,33 @@
+# SimilarityMachine.py
+
 import math
+
+from .Types.DB import DB
 
 DEBUG = 0
 NORMAL = 1
 
 class SimilarityMachine:
-    def __init__(self, db, mode=NORMAL):
+    
+    def __init__(self, db: DB, mode: int =NORMAL):
+        '''
+            constructor
+            Args:
+                db (DB) : 데이터가 들어간 DB class
+                mode (int) : [debug, normal] 모드 선택
+        '''
         self.db = db
         self.mode = mode
         
-    def getSet(self, rowId):
+    def getSet(self, rowId: str) -> set:
+        '''
+        (내부함수) 해당하는 DB 행의 모든 열에 대한 Set(집합)을 return하는 함수
+            Args:
+                rowId (str) : 행을 선택하기 위한 key값
+            Returns:
+                totalSet (set) : 모든 집합
+            
+        '''
         columnNames = self.db.getAllColumns(except_pk=True)
         
         totalSet = set()
@@ -23,7 +42,15 @@ class SimilarityMachine:
                 totalSet = totalSet | set(words)
         return totalSet
     
-    def getCountDict(self, rowId):
+    def getCountDict(self, rowId: str) -> dict:
+        '''
+        (내부함수) 해당하는 DB 행의 모든 열에 대한 단어의 개수를 dictionary형태로 return하는 함수
+            Args:
+                rowId (str) : 행을 선택하기 위한 key값
+            Returns:
+                countDict (dict) : 단어 개수 사전
+            
+        '''
         columnNames = self.db.getAllColumns(except_pk=True)
         
         
@@ -42,7 +69,15 @@ class SimilarityMachine:
                 
         return countDict
         
-    def getJaccard(self, row1Id, row2Id):
+    def getJaccard(self, row1Id: str, row2Id: str) -> float:
+        '''
+        자카드 유사도를 return하는 함수
+            Args:
+                row1Id (str) : 비교대상 1번 key값
+                row2Id (str) : 비교대상 2번 key값
+            Returns:
+                jaccardSimilarity값 (float) : 자카드 유사도 값
+        '''
         row1Set = self.getSet(row1Id)
         row2Set = self.getSet(row2Id)
         
@@ -61,9 +96,16 @@ class SimilarityMachine:
         return jaccardSimilarity
     
     def getCosine(self, row1Id, row2Id):
+        '''
+        코사인 유사도를 return하는 함수
+            Args:
+                row1Id (str) : 비교대상 1번 key값
+                row2Id (str) : 비교대상 2번 key값
+            Returns:
+                cosineSimilarity (float) : 코사인 유사도 값
+        '''
         row1CountDict = self.getCountDict(row1Id)
         row2CountDict = self.getCountDict(row2Id)
-        
         
         # 모든 단어집합
         keySets = set(row1CountDict.keys()) | set(row2CountDict.keys())
