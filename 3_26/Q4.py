@@ -58,12 +58,12 @@ print(f'{key1}과 {key2}의 자카드 유사도 : {jaccardSimilarity}\n')
 
 key1 = "Tom Cruise"
 key2 = "T. Cruise"
-cosineMuchine = SimilarityMachine(db=actorDB, mode=DEBUG)
-cosineDistance = cosineMuchine.getCosine(key1, key2)
+cosineMachine = SimilarityMachine(db=actorDB, mode=DEBUG)
+cosineDistance = cosineMachine.getCosine(key1, key2)
 print(f'{key1}과 {key2}의 코사인 유사도 : {cosineDistance}\n')
 
 key1 = "1"
 key2 = "2"
-cosineMuchine2 = SimilarityMachine(db=documentDB, mode=DEBUG)
-cosineDistance = cosineMuchine2.getCosine(key1, key2)
-print(f'document {key1}과 document {key2}의 코사인 유사도 : {cosineDistance}')
+cosineMachine2 = SimilarityMachine(db=documentDB, mode=DEBUG)
+cosineDistance2 = cosineMachine2.getCosine(key1, key2)
+print(f'document {key1}과 document {key2}의 코사인 유사도 : {cosineDistance2}')

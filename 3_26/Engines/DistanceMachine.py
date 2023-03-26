@@ -1,24 +1,26 @@
 # DistanceMachine.py
 
 import math
+
 from .Types.DB import DB
 
 DEBUG = 0
 NORMAL = 1
 
-class DB:
-    def __init__(self):
-        self.a = 10
-        self.b = 10
-
 class DistanceMachine:
-    def __init__(self, db: DB, mode: int = NORMAL) -> None:
-        '''
-            constructor
-            Args:
-                db (DB) : 데이터가 들어간 DB class
-                mode (int) : [debug, normal] 모드 선택
-        '''
+    '''
+        DistanceMachine Class
+        
+        DistanceMachine은 L1Norm(맨하튼 거리) 값과 L2Norm(유클리드 거리) 계산해주는 Class입니다. 
+        벡터 P, Q가 주어졌을 때
+        L1Norm(맨하튼 거리)값은 sigma(i, 0, n)|Pi - Qi| 으로 나타낼 수 있고 
+        L2Norm(유클리드 거리)값은  sigma(i, 0, n)(Pi - Qi)^2 로 표현할 수 있습니다
+        
+        Attributes:
+            db (DB) : 데이터가 들어간 DB class
+            mode (int) : [debug, normal] 모드 선택
+    '''
+    def __init__(self, db: DB, mode: int = NORMAL):
         self.db = db
         self.mode = mode
     
