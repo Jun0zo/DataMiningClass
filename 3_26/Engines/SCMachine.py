@@ -1,4 +1,4 @@
-# SVMuchine.py
+# SVMachine.py
 
 DEBUG = 0
 NORMAL = 1
