@@ -1,7 +1,7 @@
 import re
 
-from DB import DB
-from SimilarityMachine import SimilarityMachine
+from .DB.DB import DB
+from .Engines.SimilarityMachine import SimilarityMachine
 
 DEBUG = 0
 NORMAL = 1

@@ -3,7 +3,7 @@
 # Q2.py
 import random
 
-from Perceptron import Perceptron
+from Engines.Perceptron import Perceptron
 
 DEBUG = 0
 NORMAL = 1

@@ -29,10 +29,13 @@ class SCMachine:
 
         # debug모드일 때만 출력
         if self.mode == DEBUG:
+            keyString = ','.join([*key])
+            valueString = ','.join([*value])
             itemString = ','.join([*key, *value])
             print('============= Support 값 =============')
-            print(f'전체 행 개수 : {N}')
+            print(f'support({keyString} -> {valueString})')
             print(f'value값( [{itemString}] )을 만족하는 행의 개수 :', itemCnt)
+            print(f'전체 행 개수 : {N}')
             print(f'support값 = {itemCnt} / {N} = {supportValue}')
             print()
         
@@ -47,10 +50,13 @@ class SCMachine:
         
         # debug모드일 때만 출력
         if self.mode == DEBUG:
-            keyValueString = ','.join([*key, *value])
             keyString = ','.join([*key])
+            valueString = ','.join([*value])
+            itemString = ','.join([*key, *value])
+            
             print('============= Confidence 값 =============')
-            print(f'key+value값( [{keyValueString}] )을 만족하는 행의 개수 : {keyValueCnt}')
+            print(f'confidence({keyString} -> {valueString})')
+            print(f'key+value값( [{itemString}] )을 만족하는 행의 개수 : {keyValueCnt}')
             print(f'value값( [{keyString}] )을 만족하는 행의 개수 :', keyCnt)
             print(f'support값 = {keyValueCnt} / {keyCnt} = {confidenceValue}')
             print()

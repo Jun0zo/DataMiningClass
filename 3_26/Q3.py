@@ -1,5 +1,5 @@
-from DB import DB
-from DistanceMachine import DistanceMachine
+from .DB.DB import DB
+from Engines.DistanceMachine import DistanceMachine
 
 
 peopleDB = DB([
