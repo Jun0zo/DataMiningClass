@@ -1,4 +1,4 @@
-# SVMachine.py
+# SCMachine.py
 
 DEBUG = 0
 NORMAL = 1

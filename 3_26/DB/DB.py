@@ -9,7 +9,7 @@ class DB:
     def setDB(self, db):
         self.db = db
 
-    # DB의 열이름을 모두 return
+    # DB의 열(attribute)이름을 모두 return
     def getAllColumns(self, except_pk=False):
         try:
             columnNames = list(self.db[0].keys())
@@ -19,11 +19,11 @@ class DB:
         except:
             print("DB가 초기화 되지 않았습니다")
 
-    # DB의 행(레코드)을 모두 return
+    # DB의 행(tuple)을 모두 return
     def getAllRows(self):
         return self.db
     
-    # 해당 ID (PK)를 가진 DB의 행(레코드)을 모두 return
+    # 해당 ID (PK)를 가진 DB의 행(tuple)을 모두 return
     def getRow(self, pk):
         rows = self.getAllRows()
         for row in rows:
@@ -31,6 +31,6 @@ class DB:
                 return row
         return None
     
-    # DB의 행(레코드)의 개수를 return
+    # DB의 행(tuple)의 개수를 return
     def getRowsCnt(self):
         return len(self.db)

@@ -16,12 +16,12 @@ db = DB([
 ])
 
 
-svmuchine = SCMachine(db, mode=DEBUG)
+scmachine = SCMachine(db, mode=DEBUG)
 
 # support({우유, 기저귀}, {맥주}) : 우유, 기저귀, 맥주를 모두 포함한 거래 수
-supportValue = svmuchine.getSupportValue(["우유", "기저귀"], ["맥주"], "items")
+supportValue = scmachine.getSupportValue(["우유", "기저귀"], ["맥주"], "items")
 print('support값 : ', supportValue)
 
 # confidence({우유, 기저귀}, {맥주}) : 우유와 기저귀가 있는 거래내역 중 맥주도 함께 포함한 거래 수
-confidenceValue = svmuchine.getConfidencetValue(["우유", "기저귀"], ["맥주"], "items")
+confidenceValue = scmachine.getConfidencetValue(["우유", "기저귀"], ["맥주"], "items")
 print('confidence값 : ', confidenceValue)
