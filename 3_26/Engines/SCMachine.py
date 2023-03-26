@@ -1,4 +1,4 @@
-#SVMuchine.py
+# SVMuchine.py
 
 DEBUG = 0
 NORMAL = 1
@@ -10,10 +10,11 @@ class SCMachine:
         self.mode = mode
 
     # 규칙에 해당하는 행의 개수 계산
+    # items: 규칙을 List 형태로 받아옴 (ex: [A,B,C])
     def _getItemCnt(self, items, dstColumnName):
-        # items: 규칙을 List 형태로 받아옴 (ex: [A,B,C])
         cnt = 0
         rows = self.db.getAllRows()
+        # 해당 규칙이 DB에 있으면 카운트 + 1
         for row in rows:
             if all(item in row[dstColumnName] for item in items):
                 cnt += 1
@@ -22,7 +23,7 @@ class SCMachine:
 
     # Support 값 계산. (ex. key={우유,기저귀}, value={맥주} -> (우유,기저귀,맥주)/(N) )
     def getSupportValue(self, key, value, dstColumnName):
-        # key:[A,B] -> value:[a]일때 count([A,B,a] / N)  (이 때 N은 행의 개수)
+        # key:[A,B] -> value:[a]일때 count([A,B,a] / N)  (이 때 N은 전체 행의 개수)
         itemCnt = self._getItemCnt([*key, *value], dstColumnName)
         N = self.db.getRowsCnt()
         supportValue = round(itemCnt / N, 2)
