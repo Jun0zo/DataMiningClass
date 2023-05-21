@@ -1,10 +1,12 @@
-import matplotlib.pyplot as plt
 import pandas as pd
+import numpy as np
 from EM import EM
 
-csv = pd.read_csv("data.csv", sep="\t")
-data = csv.iloc[:,0:2].values.tolist()
+x = np.random.normal(7, 3, size=10)
+y = np.random.normal(20, 3, size=10)
+data = np.concatenate([x, y]).tolist()
 
-em = EM(data=data, K=3)
+print('x :', x)
+print('y : ', y)
+em = EM(data=data)
 em.clustering()
-em.plotting()

@@ -77,7 +77,7 @@ class DBSCAN:
             self.labels[point_idx] = self.cluster_id
             # CorePoint의 이웃점들을 추가로 순회
             self._expand_cluster(neighbor_idxs)
-        print(self.labels)
+        print('label :', self.labels)
         
     def plotting(self):
        # create a list of colors for each label

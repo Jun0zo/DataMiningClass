@@ -18,13 +18,11 @@ centroids = [[1,2], [4,3]]
 clusters = [[] for _ in centroids]
 
 for _ in range(ITERNUM):
-    for vector_id, vector in enumerate(data):
+    for  vector in data:
         centroid_id = min(range(len(centroids)), key=lambda i: getL2(vector, centroids[i]))
         clusters[centroid_id].append(vector)
     
-    print(centroids)
     for cluster_id, cluster in enumerate(clusters):
         new_centroid = [sum(x) / len(cluster) for x in zip(*cluster)]
         centroids[cluster_id] = new_centroid
-    print(centroids)
     
